@@ -1,189 +1,192 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
+  name: Hyowon Wi
+  label: Ph.D. Student, KAIST School of Computing
+  email: hyowon.wi@kaist.ac.kr
+  phone: +82-10-4113-5068
+  location: Daejeon, South Korea
   image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  summary: Ph.D. student at KAIST advised by Prof. Noseong Park. Research interests include Transformer architectures and parameter-efficient fine-tuning techniques for large language models.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
     - network: GitHub
-      username: example
+      username: hyowonwi
     - network: LinkedIn
-      username: example
-
-  address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
-    countryCode: US
+      username: hyowonwi
 
   sections:
-    Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
-        highlights:
-          - Description 1.
-          - Description 2.
+    About:
+      - I am currently a Ph.D. student in the School of Computing at KAIST. I received my B.S. and M.S. in Computer Science from Yonsei University. My research interests include Transformer architectures and parameter-efficient fine-tuning (PEFT) techniques for LLMs, as well as efficiency-oriented design for LLM inference and training.
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
+    Education:
+      - institution: KAIST
+        location: Daejeon, South Korea
+        url: https://cs.kaist.ac.kr/
+        area: School of Computing
+        studyType: Ph.D.
+        start_date: 2024-09
+        end_date: Present
         highlights:
-          - Description 1.
-          - Description 2.
+          - Advisor: Prof. Noseong Park
+
+      - institution: Yonsei University
+        location: Seoul, South Korea
+        url: https://cs.yonsei.ac.kr/
+        area: Computer Science
+        studyType: M.S.
+        start_date: 2022-09
+        end_date: 2024-05
+
+      - institution: Yonsei University
+        location: Seoul, South Korea
+        url: https://cs.yonsei.ac.kr/
+        area: Computer Science
+        studyType: B.S.
+        start_date: 2018-09
+        end_date: 2022-05
 
     Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
-        highlights:
-          - Relativity
-          - Description 2.
-
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
-        highlights:
-          - Description 1.
-          - Description 2.
-
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
-
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
-
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
-
-    Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
-        highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
-
-    Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
-
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+      - company: NC AI
+        position: NLP Research Intern (Project 'World Best LLM')
+        location: South Korea
+        start_date: 2025-09
+        end_date: 2026-02
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
+      - title: "RDGCL: Reaction-Diffusion Graph Contrastive Learning for Recommendation"
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+          - Jeongwhan Choi*
+          - Hyowon Wi*
+          - Chaejeong Lee
+          - Sung-Bae Cho
+          - Dongha Lee
+          - Noseong Park
+        publisher: Submitted to IJCAI-ECAI
+        releaseDate: 2026
+        summary: "* Equal contribution."
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+      - title: Can Spectral-Clipping Enable Better Learning While Forgetting Less for Low-Rank Adaptation?
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+          - Hyowon Wi
+          - Noseong Park
+        publisher: ACL
+        releaseDate: 2026
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
+      - title: Learning Advanced Self-Attention for Linear Transformers in the Singular Value Domain
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+          - Hyowon Wi
+          - Jeongwhan Choi
+          - Noseong Park
+        publisher: IJCAI
+        releaseDate: 2025
+        url: https://arxiv.org/abs/2505.08516
+
+      - title: "SCONE: A Novel Stochastic Sampling to Generate Contrastive Views and Hard Negative Samples for Recommendation"
+        authors:
+          - Chaejeong Lee
+          - Jeongwhan Choi
+          - Hyowon Wi
+          - Sung-Bae Cho
+          - Noseong Park
+        publisher: WSDM
+        releaseDate: 2025
+        url: https://doi.org/10.1145/3701551.3703522
+
+      - title: Graph Convolutions Enrich the Self-Attention in Transformers!
+        authors:
+          - Jeongwhan Choi*
+          - Hyowon Wi*
+          - Jayoung Kim
+          - Yehjin Shin
+          - Kookjin Lee
+          - Nathaniel Trask
+          - Noseong Park
+        publisher: NeurIPS
+        releaseDate: 2024
+        url: https://dl.acm.org/doi/10.5555/3737916.3739592
+        summary: "* Equal contribution."
+
+      - title: Polynomial-based Self-Attention for Table Representation Learning
+        authors:
+          - Jayoung Kim
+          - Yehjin Shin
+          - Jeongwhan Choi
+          - Hyowon Wi
+          - Noseong Park
+        publisher: ICML
+        releaseDate: 2024
+        url: https://dl.acm.org/doi/10.5555/3692070.3693053
+
+      - title: "PANDA: Expanded Width-Aware Message Passing Beyond Rewiring"
+        authors:
+          - Jeongwhan Choi
+          - Sumin Park
+          - Hyowon Wi
+          - Sung-Bae Cho
+          - Noseong Park
+        publisher: ICML
+        releaseDate: 2024
+        url: https://dl.acm.org/doi/10.5555/3692070.3692419
+
+      - title: An Attentive Inductive Bias for Sequential Recommendation beyond the Self-Attention
+        authors:
+          - Yehjin Shin
+          - Jeongwhan Choi
+          - Hyowon Wi
+          - Noseong Park
+        publisher: AAAI
+        releaseDate: 2024
+        url: https://doi.org/10.1609/aaai.v38i8.28747
+
+      - title: Continuous-Time Autoencoders for Regular and Irregular Time Series Imputation
+        authors:
+          - Hyowon Wi
+          - Yehjin Shin
+          - Noseong Park
+        publisher: WSDM
+        releaseDate: 2024
+        url: https://doi.org/10.1145/3616855.3635831
+
+      - title: Long-Term Time Series Forecasting based on Decomposition and Neural Ordinary Differential Equations
+        authors:
+          - Seonkyu Lim
+          - Jaehyeon Park
+          - Seojin Kim
+          - Hyowon Wi
+          - Haksoo Lim
+          - Jinsung Jeon
+          - Jeongwhan Choi
+          - Noseong Park
+        publisher: IEEE BigData
+        releaseDate: 2023
+        url: https://doi.org/10.1109/BigData59044.2023.10386388
+
+      - title: "TimeKit: A Time-Series Forecasting-based Upgrade Kit for Collaborative Filtering"
+        authors:
+          - Seoyoung Hong
+          - Minju Jo
+          - Seungji Kook
+          - Jaeeun Jung
+          - Hyowon Wi
+          - Noseong Park
+          - Sung-Bae Cho
+        publisher: IEEE BigData
+        releaseDate: 2022
+        url: https://doi.org/10.1109/BigData55660.2022.10020773
+
+    Research Interests:
+      - name: Transformer architectures
+        icon: fa-solid fa-network-wired
+        keywords: "Self-attention, Linear Transformers, Architectural design"
+
+      - name: Large Language Models
+        icon: fa-solid fa-language
+        keywords: "Parameter-efficient fine-tuning, LoRA, Efficient inference and training"
 
     Skills:
-      - name: Physics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Programming Languages
+        icon: fa-solid fa-code
+        keywords: "Python"
 
-    Languages:
-      - name: German
-        summary: "Native speaker"
-
-      - name: English
-        summary: "Fluent"
-
-    Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
-
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
-    Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
-        highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
-
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
-
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: Deep Learning Frameworks
+        icon: fa-solid fa-microchip
+        keywords: "PyTorch, TensorFlow"
