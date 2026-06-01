@@ -12,6 +12,13 @@ layout: default
       {% endif %}
     </h1>
     <p class="desc">{{ page.subtitle }}</p>
+    
+    <!-- Social icons below name -->
+    {% if page.social %}
+      <div class="social-header">
+        <div class="contact-icons-small">{% include social.liquid %}</div>
+      </div>
+    {% endif %}
   </header>
 
   <article>
@@ -38,7 +45,46 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    {% include about_sidebar.liquid %}
+
+    <div id="intro" class="about-bio clearfix">{{ content }}</div>
+
+    {% if page.ongoing_projects and page.ongoing_projects.items.size > 0 %}
+    <section class="ongoing-projects">
+      <h2 class="section-title">
+        <div style="height: 0.8em;"></div>
+        <span>{{ page.ongoing_projects.title }}</span>
+      </h2>
+      {% for item in page.ongoing_projects.items %}
+      <div class="ongoing-project-item">
+        <h3 class="ongoing-project-item-title">{{ item.title }}</h3>
+        {% if item.description %}
+        <p class="ongoing-project-item-desc">{{ item.description }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if page.news_section and page.news_section.items.size > 0 %}
+    <section id="news" class="news-section">
+      <h2 class="section-title">
+        <div style="height: 0.8em;"></div>
+        <span>{{ page.news_section.title }}</span>
+      </h2>
+      <ul class="news-list">
+        {% for item in page.news_section.items %}
+        <li class="news-item">
+          <div class="news-date">{{ item.date }}</div>
+          <div class="news-body">
+            {% if item.tag %}<span class="news-tag">{{ item.tag }}</span>{% endif %}
+            <span class="news-desc">{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
@@ -56,22 +102,26 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
-    <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+    <section id="publications" class="selected-publications">
+      <h2 class="section-title">
+        <div style="height: 0.8em;"></div>
+        <a href="{{ '/publications/' | relative_url }}">Selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
+    </section>
     {% endif %}
 
-    <!-- Social -->
+    <!-- Social icons moved to header area -->
+    {% comment %}
     {% if page.social %}
       <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
+        <div class="contact-icons">{% include social.liquid %}</div>
 
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
+    {% endcomment %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}

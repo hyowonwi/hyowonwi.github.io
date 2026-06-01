@@ -1,14 +1,6 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
-<!-- Security: Content Security Policy -->
-<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
-<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-<meta
-  http-equiv="Content-Security-Policy"
-  content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"
->
-
 <!-- Bootstrap & MDB -->
 <link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
 <link
@@ -66,14 +58,23 @@
   >
 {% endif %}
 
-{% if site.icon.size <= 4 %}
-  <link
-    rel="shortcut icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
-  >
-{% elsif site.icon != blank %}
-  <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
-{% endif %}
+{% comment %}
+  Theme-aware favicon. Pairs by palette × mode:
+    forest → 🌲 (light) / 🌅 (dark)   [legacy: forest itself uses 🌲]
+    sunset → 🌲 (light) / 🌅 (dark)   [legacy: sunset itself uses 🌅]
+    oxford → 📕 (both modes — burgundy is the main color in light and dark)
+  Initial value is set from `site.palette` × `default_theme` so the right icon
+  ships in the HTML; theme.js updates the href on every theme toggle.
+{% endcomment %}
+{% assign initial_favicon = '🌲' %}
+{% if site.palette == 'sunset' %}{% assign initial_favicon = '🌅' %}{% endif %}
+{% if site.palette == 'oxford' %}{% assign initial_favicon = '📕' %}{% endif %}
+
+<link
+  id="favicon"
+  rel="shortcut icon"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ initial_favicon }}</text></svg>"
+>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
@@ -193,16 +194,5 @@
 {% endif %}
 
 {% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="{{ '/assets/css/tikzjax.min.css' | relative_url | bust_file_cache }}">
-{% endif %}
-
-{% if site.enable_cookie_consent %}
-  <!-- Cookie Consent -->
-  <link
-    defer
-    rel="stylesheet"
-    href="{{ site.third_party_libraries.vanilla-cookieconsent.url.css }}"
-    integrity="{{ site.third_party_libraries.vanilla-cookieconsent.integrity.css }}"
-    crossorigin="anonymous"
-  >
+  <link defer rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
 {% endif %}

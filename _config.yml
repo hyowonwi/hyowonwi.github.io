@@ -60,7 +60,12 @@ posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 790px
+
+# Site palette: "sunset" (purple point + peach sub-point, default dark mode)
+#               "forest" (blue point + cyan-green sub-point, both modes when selected)
+#               "oxford" (Oxford Blue point + burgundy sub-point, both modes when selected)
+palette: forest
 
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
@@ -398,6 +403,7 @@ enable_google_analytics: false # enables google analytics
 enable_cronitor_analytics: false # enables cronitor RUM analytics
 enable_pirsch_analytics: false # enables Pirsch analytics (https://pirsch.io/)
 enable_openpanel_analytics: false # enables Openpanel analytics (https://openpanel.dev/)
+enable_goatcounter_analytics: false # enables GoatCounter analytics (https://www.goatcounter.com/)
 enable_google_verification: false # enables google site verification
 enable_bing_verification: false # enables bing site verification
 enable_cookie_consent: false # enables GDPR-compliant cookie consent dialog (https://github.com/orestbida/cookieconsent)

@@ -2,8 +2,6 @@
  * Content
  ******************************************************************************/
 
-@use "variables" as v;
-
 body {
   padding-bottom: 70px;
   color: var(--global-text-color);
@@ -21,7 +19,34 @@ body {
 
 body.fixed-top-nav {
   // Add some padding for the nav-bar.
-  padding-top: 57px;
+  padding-top: 45px;
+  padding-left: 20px;
+}
+
+// Adjust gap between header and page title
+.post {
+  margin-top: -1rem;
+
+  .post-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .post-header .desc {
+    color: var(--global-sub-point-color-strong);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    margin-bottom: 0.25rem;
+  }
+
+  // Make bold text match publication title boldness
+  article {
+    strong, b {
+      font-weight: bolder;
+    }
+  }
 }
 
 body.sticky-bottom-footer {
@@ -30,26 +55,29 @@ body.sticky-bottom-footer {
 }
 
 .container {
-  max-width: v.$max-content-width;
+  max-width: $max-content-width;
+}
+
+// Make container wider for publications page
+.publications .container,
+body:has(.publications) .container {
+  max-width: $max-content-width;
 }
 
 // Profile
 .profile {
   img {
-    width: 100%;
+    width: 85%;
   }
 }
 
-// Content layout uses Bootstrap's grid system with responsive columns
-// Main content flows naturally through container-mt-5 and Bootstrap grid classes
-// See _layouts/default.liquid and _includes/projects.liquid for examples
+// TODO: redefine content layout.
 
 /******************************************************************************
  * Publications
  ******************************************************************************/
 
-// Publications layout is defined in _includes/bib_search.liquid
-// Uses jekyll-scholar for BibTeX parsing and Bootstrap cards for display
+// TODO: redefine publications layout.
 
 /*****************************************************************************
 * Projects

@@ -21,6 +21,35 @@ let setThemeSetting = (themeSetting) => {
   applyTheme();
 };
 
+// Swap the favicon AND the navbar emoji indicator to match the active
+// palette × theme. Palette is read from <html data-palette="...">, set by
+// the layout from `site.palette` in _config.yml.
+//   forest: 🌲 (both modes — forest is the through-line)
+//   sunset (legacy default): 🌲 light, 🌅 dark
+//   oxford: 📕 (both modes — burgundy is the through-line)
+let setPaletteEmoji = (theme) => {
+  let palette = document.documentElement.getAttribute("data-palette") || "forest";
+  let emoji;
+  if (palette === "oxford") {
+    // Burgundy book in both light and dark \u2014 burgundy is the through-line.
+    emoji = "\uD83D\uDCD5";
+  } else if (palette === "forest") {
+    // Forest in both modes \u2014 \uD83C\uDF32 across light and dark.
+    emoji = "\uD83C\uDF32";
+  } else {
+    // \uD83C\uDF32 light (forest), \uD83C\uDF05 dark (sunset)
+    emoji = theme === "dark" ? "\uD83C\uDF05" : "\uD83C\uDF32";
+  }
+  let href =
+    "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>" +
+    emoji +
+    "</text></svg>";
+  let link = document.getElementById("favicon");
+  if (link) link.setAttribute("href", href);
+  let badge = document.getElementById("palette-emoji");
+  if (badge) badge.textContent = emoji;
+};
+
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
   let theme = determineComputedTheme();
@@ -29,8 +58,7 @@ let applyTheme = () => {
   setHighlight(theme);
   setGiscusTheme(theme);
   setSearchTheme(theme);
-  setCookieConsentTheme(theme);
-  updateCalendarUrl();
+  setPaletteEmoji(theme);
 
   // if mermaid is not defined, do nothing
   if (typeof mermaid !== "undefined") {
@@ -246,18 +274,6 @@ let setSearchTheme = (theme) => {
   }
 };
 
-let setCookieConsentTheme = (theme) => {
-  // Sync cookie consent modal with site's theme
-  // The cookie consent library supports dark mode via the cc--darkmode class
-  var htmlElement = document.documentElement;
-
-  if (theme === "dark") {
-    htmlElement.classList.add("cc--darkmode");
-  } else {
-    htmlElement.classList.remove("cc--darkmode");
-  }
-};
-
 let transTheme = () => {
   document.documentElement.classList.add("transition");
   window.setTimeout(() => {
@@ -265,27 +281,29 @@ let transTheme = () => {
   }, 500);
 };
 
+// Default theme is set on <html data-default-theme="..."> by the layout, which
+// in turn reads `palette` from _config.yml (sunset → "dark", forest → "light").
+let getDefaultTheme = () => {
+  let attr = document.documentElement.getAttribute("data-default-theme");
+  return attr === "dark" ? "dark" : "light";
+};
+
 // Determine the expected state of the theme toggle, which can be "dark", "light", or
-// "system". Default is "system".
+// "system". Default follows the active palette.
 let determineThemeSetting = () => {
   let themeSetting = localStorage.getItem("theme");
   if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
-    themeSetting = "system";
+    themeSetting = getDefaultTheme();
   }
   return themeSetting;
 };
 
 // Determine the computed theme, which can be "dark" or "light". If the theme setting is
-// "system", the computed theme is determined based on the user's system preference.
+// "system", default follows the active palette.
 let determineComputedTheme = () => {
   let themeSetting = determineThemeSetting();
   if (themeSetting == "system") {
-    const userPref = window.matchMedia;
-    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    } else {
-      return "light";
-    }
+    return getDefaultTheme();
   } else {
     return themeSetting;
   }
@@ -303,40 +321,14 @@ let initTheme = () => {
     mode_toggle.addEventListener("click", function () {
       toggleThemeSetting();
     });
+
+    // Re-apply the palette emoji now that the navbar (which lives in <body>)
+    // exists in the DOM — theme.js itself runs in <head> on first paint.
+    setPaletteEmoji(determineComputedTheme());
   });
 
   // Add event listener to the system theme preference change.
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
     applyTheme();
   });
-};
-
-// Get the appropriate background color for Google Calendar based on current theme
-let getCalendarBgColor = () => {
-  let theme = determineComputedTheme();
-  return theme === "dark" ? "333333" : "f9f9f9";
-};
-
-// Get the Google Calendar embed URL with the correct background color
-let getCalendarUrl = (calendarId, timezone = "UTC") => {
-  const baseUrl = "https://calendar.google.com/calendar/embed";
-  const params = new URLSearchParams({
-    src: calendarId,
-    ctz: timezone,
-    mode: "WEEK",
-    showTitle: "0",
-    showPrint: "0",
-    showCalendars: "0",
-    showTabs: "0",
-    bgcolor: getCalendarBgColor(),
-  });
-  return `${baseUrl}?${params.toString()}`;
-};
-
-// Update the calendar iframe src to apply theme changes
-let updateCalendarUrl = () => {
-  const iframe = document.getElementById("calendar-iframe");
-  if (iframe && iframe.dataset.calendarId) {
-    iframe.src = getCalendarUrl(iframe.dataset.calendarId, iframe.dataset.timezone || "UTC");
-  }
 };
